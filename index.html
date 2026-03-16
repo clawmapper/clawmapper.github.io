@@ -9,25 +9,29 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F9F8F6;
-      --surface: #FFFFFF;
-      --border: #E4E3DF;
-      --text: #1C1B18;
-      --muted: #6E6D68;
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #1c2128;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
       --accent: #E05C1A;
-      --accent-light: #FDF0E8;
-      --code-bg: #F0EFE9;
-      --radius: 8px;
+      --accent-dim: rgba(224, 92, 26, 0.12);
+      --accent-border: rgba(224, 92, 26, 0.35);
+      --green: #3fb950;
+      --code-bg: #1c2128;
+      --radius: 3px;
+      --mono: "SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono", "Consolas", monospace;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: var(--mono);
       background: var(--bg);
       color: var(--text);
-      font-size: 17px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -36,7 +40,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(249, 248, 246, 0.88);
+      background: rgba(13, 17, 23, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -46,52 +50,40 @@
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 28px;
-      height: 60px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .logo {
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.3px;
       color: var(--text);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
     }
 
-    .logo .claw {
-      display: block;
-      flex-shrink: 0;
-    }
+    .logo .claw { display: block; flex-shrink: 0; }
 
     nav a.gh-link {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
       text-decoration: none;
       border: 1px solid var(--border);
       padding: 5px 14px;
-      border-radius: 6px;
+      border-radius: var(--radius);
       transition: color 0.15s, border-color 0.15s;
     }
 
     nav a.gh-link:hover { color: var(--text); border-color: var(--muted); }
 
     /* ── CONTAINERS ── */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    .container-narrow {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    .container-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
 
     /* ── HERO ── */
     .hero {
@@ -102,24 +94,21 @@
     .hero .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 28px;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
     }
 
+    .hero .eyebrow::before { content: "//"; color: var(--accent); margin-right: 2px; }
+
     .hero h1 {
-      font-size: clamp(38px, 6vw, 64px);
+      font-size: clamp(34px, 6vw, 60px);
       font-weight: 800;
       letter-spacing: -2px;
-      line-height: 1.07;
-      margin-bottom: 24px;
+      line-height: 1.05;
+      margin-bottom: 28px;
       color: var(--text);
     }
 
@@ -129,9 +118,9 @@
     }
 
     .hero .sub {
-      font-size: 20px;
+      font-size: 15px;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.7;
       max-width: 560px;
       margin: 0 auto 40px;
     }
@@ -147,48 +136,52 @@
       background: var(--accent);
       color: #fff;
       text-decoration: none;
-      padding: 13px 26px;
+      padding: 11px 22px;
       border-radius: var(--radius);
       font-weight: 600;
-      font-size: 15px;
+      font-size: 13px;
+      font-family: var(--mono);
       transition: opacity 0.15s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: 0.2px;
     }
 
     .btn-primary:hover { opacity: 0.88; }
 
     .btn-secondary {
-      background: var(--surface);
-      color: var(--text);
+      background: transparent;
+      color: var(--muted);
       text-decoration: none;
-      padding: 13px 26px;
+      padding: 11px 22px;
       border-radius: var(--radius);
       font-weight: 500;
-      font-size: 15px;
+      font-size: 13px;
+      font-family: var(--mono);
       border: 1px solid var(--border);
-      transition: border-color 0.15s;
+      transition: color 0.15s, border-color 0.15s;
     }
 
-    .btn-secondary:hover { border-color: var(--muted); }
+    .btn-secondary:hover { color: var(--text); border-color: var(--muted); }
 
     /* ── TERMINAL DEMO ── */
     .terminal-wrap {
-      max-width: 680px;
+      max-width: 700px;
       margin: 60px auto 0;
-      border-radius: 12px;
+      border-radius: 6px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 24px 64px rgba(0,0,0,0.5);
     }
 
     .terminal-bar {
-      background: #2C2B28;
-      padding: 12px 16px;
+      background: var(--surface2);
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       gap: 6px;
+      border-bottom: 1px solid var(--border);
     }
 
     .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -198,29 +191,29 @@
 
     .terminal-label {
       margin-left: 8px;
-      font-size: 12px;
-      color: #888;
-      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
     }
 
     .terminal-body {
-      background: #1E1D1A;
-      padding: 24px;
-      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
-      font-size: 13.5px;
-      line-height: 1.7;
+      background: var(--surface);
+      padding: 24px 28px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.75;
     }
 
-    .t-prompt { color: #888; }
-    .t-cmd { color: #E0DED8; }
-    .t-comment { color: #555; }
-    .t-agent { color: #E05C1A; font-weight: 600; }
-    .t-output { color: #A8D5A2; }
+    .t-prompt { color: var(--green); }
+    .t-cmd { color: var(--text); }
+    .t-comment { color: #484f58; }
+    .t-agent { color: var(--accent); font-weight: 600; }
+    .t-output { color: #79c0ff; }
     .t-cursor {
       display: inline-block;
       width: 8px;
       height: 14px;
-      background: #E0DED8;
+      background: var(--text);
       vertical-align: middle;
       animation: blink 1.1s step-end infinite;
     }
@@ -228,26 +221,22 @@
     @keyframes blink { 50% { opacity: 0; } }
 
     /* ── DIVIDER ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ── SECTIONS ── */
     section { padding: 80px 0; }
 
     .section-label {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 16px;
     }
 
     h2 {
-      font-size: clamp(26px, 4vw, 38px);
+      font-size: clamp(24px, 4vw, 36px);
       font-weight: 800;
       letter-spacing: -1px;
       line-height: 1.15;
@@ -257,9 +246,9 @@
     h2 .muted { color: var(--muted); font-weight: 400; }
 
     .lead {
-      font-size: 18px;
+      font-size: 15px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 32px;
     }
 
@@ -281,40 +270,32 @@
       .concept-grid { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    .concept-diagram {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .concept-diagram { display: flex; flex-direction: column; gap: 4px; }
 
-    .diagram-row {
-      display: flex;
-      align-items: stretch;
-      gap: 4px;
-    }
+    .diagram-row { display: flex; align-items: stretch; gap: 4px; }
 
     .diagram-cell {
       flex: 1;
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 14px 16px;
-      font-size: 13px;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 12px;
       color: var(--muted);
     }
 
     .diagram-cell .label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--muted);
       margin-bottom: 3px;
     }
 
     .diagram-cell.accent-cell {
-      background: var(--accent-light);
-      border-color: #F0C9A8;
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
     }
 
     .diagram-cell.accent-cell .label { color: var(--accent); }
@@ -323,7 +304,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--border);
       padding: 4px 0;
     }
@@ -332,7 +313,7 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 16px;
       margin-top: 48px;
     }
 
@@ -345,46 +326,44 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px;
+      transition: border-color 0.15s;
     }
 
+    .step:hover { border-color: var(--muted); }
+
     .step-num {
-      width: 32px;
-      height: 32px;
-      background: var(--code-bg);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--text);
+      color: var(--accent);
       margin-bottom: 16px;
+      letter-spacing: 0.5px;
     }
 
     .step h3 {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.2px;
+      margin-bottom: 10px;
+      color: var(--text);
     }
 
     .step p {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.65;
     }
 
     .step code {
       background: var(--code-bg);
-      padding: 1px 5px;
-      border-radius: 4px;
-      font-family: "SF Mono", monospace;
-      font-size: 12px;
-      color: var(--text);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: #79c0ff;
+      border: 1px solid var(--border);
     }
 
     /* ── STACK ── */
-    .stack-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stack-section { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
     .stack-grid {
       display: grid;
@@ -401,42 +380,41 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px;
-      background: var(--bg);
+      background: var(--surface);
+      transition: border-color 0.15s;
     }
 
-    .stack-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-      display: block;
-    }
+    .stack-card:hover { border-color: var(--muted); }
+
+    .stack-icon { font-size: 24px; margin-bottom: 16px; display: block; }
 
     .stack-card h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       margin-bottom: 6px;
-      letter-spacing: -0.2px;
+      color: var(--text);
     }
 
     .stack-card .stack-role {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       margin-bottom: 10px;
     }
 
     .stack-card p {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.65;
     }
 
     /* ── FOR WHO ── */
     .personas {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 12px;
       margin-top: 40px;
     }
 
@@ -447,25 +425,27 @@
     .persona {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px 24px;
     }
 
     .persona h3 {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 700;
       margin-bottom: 6px;
+      color: var(--text);
     }
 
     .persona p {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* ── THE PATTERN ── */
     .pattern-section {
-      background: var(--bg);
+      background: var(--surface);
       border-top: 1px solid var(--border);
     }
 
@@ -480,119 +460,107 @@
       .pattern-inner { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    .pattern-examples {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .pattern-examples { display: flex; flex-direction: column; gap: 8px; }
 
     .pattern-card {
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px 20px;
-      background: var(--surface);
+      padding: 16px 20px;
+      background: var(--bg);
       transition: border-color 0.15s;
     }
 
     .pattern-card.pattern-active {
-      border-color: var(--accent);
-      background: var(--accent-light);
+      border-color: var(--accent-border);
+      background: var(--accent-dim);
     }
 
     .pattern-card-label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       color: var(--muted);
       margin-bottom: 4px;
     }
 
-    .pattern-card.pattern-active .pattern-card-label {
-      color: var(--accent);
-    }
+    .pattern-card.pattern-active .pattern-card-label { color: var(--accent); }
 
     .pattern-card-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
-      letter-spacing: -0.2px;
     }
 
     .pattern-card-desc {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* ── CTA ── */
     .cta-section {
-      background: var(--text);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
       padding: 80px 0;
     }
 
     .cta-section .container-narrow { text-align: center; }
-
-    .cta-section h2 {
-      color: #fff;
-      letter-spacing: -1.5px;
-    }
-
-    .cta-section .lead {
-      color: #888;
-    }
+    .cta-section h2 { color: var(--text); }
+    .cta-section .lead { color: var(--muted); }
 
     .clone-block {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: #2C2B28;
-      border: 1px solid #3A3936;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 14px 18px;
       margin: 32px auto 0;
-      max-width: 520px;
+      max-width: 560px;
       cursor: pointer;
+      transition: border-color 0.15s;
     }
+
+    .clone-block:hover { border-color: var(--muted); }
 
     .clone-block code {
       flex: 1;
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: 13px;
-      color: #D4D3CE;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: #79c0ff;
       text-align: left;
     }
 
     .clone-block .copy-btn {
-      font-size: 12px;
-      color: #666;
+      font-size: 11px;
+      color: var(--muted);
       background: none;
-      border: 1px solid #3A3936;
-      border-radius: 4px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 4px 10px;
       cursor: pointer;
       transition: color 0.15s, border-color 0.15s;
-      font-family: inherit;
+      font-family: var(--mono);
       white-space: nowrap;
     }
 
-    .clone-block .copy-btn:hover { color: #D4D3CE; border-color: #666; }
+    .clone-block .copy-btn:hover { color: var(--text); border-color: var(--muted); }
 
     .cta-note {
-      font-size: 13px;
-      color: #555;
-      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.6;
+      margin-top: 14px;
     }
 
-    .cta-section .btn-primary {
-      margin-top: 32px;
-      background: var(--accent);
-    }
+    .cta-section .btn-primary { margin-top: 32px; }
 
     /* ── FOOTER ── */
     footer {
-      padding: 32px 0;
+      padding: 28px 0;
       border-top: 1px solid var(--border);
     }
 
@@ -604,16 +572,8 @@
       gap: 12px;
     }
 
-    footer .left {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    footer .right {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
+    footer .left { font-size: 12px; color: var(--muted); opacity: 0.6; }
+    footer .right { font-size: 12px; color: var(--muted); }
     footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
     footer a:hover { color: var(--text); }
   </style>
@@ -624,11 +584,11 @@
 <nav>
   <div class="inner">
     <a class="logo" href="#">
-      <svg class="claw" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="26" height="26" rx="6" fill="#E05C1A"/>
-        <line x1="7" y1="5" x2="5" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="13" y1="4" x2="13" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="19" y1="5" x2="21" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <svg class="claw" width="24" height="24" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="26" height="26" rx="0" fill="#E05C1A"/>
+        <line x1="7" y1="5" x2="5" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
+        <line x1="13" y1="4" x2="13" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
+        <line x1="19" y1="5" x2="21" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
       </svg>
       Clawmapper
     </a>
@@ -642,7 +602,7 @@
 <section class="hero">
   <div class="container-narrow">
     <div class="eyebrow">
-      <span>✦</span> Open source · GitHub template
+      open source · github template
     </div>
     <h1>No code.<br>No database.<br><em>Just roadmap.</em></h1>
     <p class="sub">
@@ -698,25 +658,25 @@
         <p class="lead">
           Every roadmap tool took your data, wrapped it in proprietary software, and charged you rent to see it. Per seat. Per month. Forever.
         </p>
-        <p style="color: var(--muted); font-size: 16px; line-height: 1.65; margin-bottom: 16px;">
+        <p style="color: var(--muted); font-size: 13px; line-height: 1.75; margin-bottom: 16px;">
           Clawmapper is a GitHub template that wires together tools you already use. Your roadmap lives as plain Markdown in the same place as your code — same version history, same access controls, same PR workflow. Claude handles the structure so you don't have to.
         </p>
-        <p style="color: var(--muted); font-size: 16px; line-height: 1.65;">
+        <p style="color: var(--muted); font-size: 13px; line-height: 1.75;">
           Cancel the roadmap tool. Nothing is lost.
         </p>
-        <p style="color: var(--muted); font-size: 14px; line-height: 1.65; margin-top: 20px; font-style: italic;">
+        <p style="color: var(--muted); font-size: 12px; line-height: 1.75; margin-top: 20px; font-style: italic; opacity: 0.7;">
           Still need an <a href="https://linear.app" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline;">issue tracker</a>? Keep it. Clawmapper isn't that. It's how you communicate direction.
         </p>
       </div>
       <div class="concept-diagram">
-        <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 10px;">Traditional tool</div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 10px;">Traditional tool</div>
         <div class="diagram-row">
           <div class="diagram-cell"><div class="label">You</div>click through a UI</div>
           <div class="diagram-cell"><div class="label">App</div>reads/writes DB</div>
-          <div class="diagram-cell"><div class="diagram-cell" style="border:none; padding: 0;"><div class="label">Your data</div>locked in vendor DB</div></div>
+          <div class="diagram-cell" style="border:1px solid var(--border); padding: 12px 14px;"><div class="label">Your data</div>locked in vendor DB</div>
         </div>
         <div class="diagram-arrow">↓</div>
-        <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); margin: 10px 0;">With Clawmapper</div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin: 10px 0;">With Clawmapper</div>
         <div class="diagram-row">
           <div class="diagram-cell accent-cell"><div class="label">You</div>talk to Claude</div>
           <div class="diagram-cell accent-cell"><div class="label">Claude</div>writes Markdown</div>
@@ -737,21 +697,21 @@
 
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
+        <div class="step-num">01 /</div>
         <h3>Use the template</h3>
         <p>
           Use <code>clawmapper/clawmapper</code> on GitHub to create your own copy. The repo includes a pre-configured structure for roadmaps, outputs, context, and memory — along with the instructions that tell Claude how to behave.
         </p>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
+        <div class="step-num">02 /</div>
         <h3>Open it in Claude Code</h3>
         <p>
           Run <code>claude</code> in the repo directory. Claude reads your setup automatically — the conventions, who owns what, what's already in the roadmap.
         </p>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
+        <div class="step-num">03 /</div>
         <h3>Start talking</h3>
         <p>
           Describe an initiative, paste in meeting notes, ask for a status summary, or request a board-ready slide. Claude writes the roadmap files and commits the changes. Everything is versioned.
@@ -834,10 +794,10 @@
         <p class="lead">
           Clawmapper is one instance of a more general pattern. Once you see it, you can't unsee it.
         </p>
-        <p style="color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 16px;">
+        <p style="color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 16px;">
           The pattern is: <strong style="color: var(--text);">text as data, Git as substrate, Claude Code as interface.</strong> The AI is the sole author of structured content. You provide the intent. It maintains the system.
         </p>
-        <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+        <p style="color: var(--muted); font-size: 13px; line-height: 1.8;">
           Swap out <em>roadmap files</em> for research notes, life goals, a consulting engagement log, or a personal knowledge base — the architecture is identical. Clawmapper is the proof of concept. What you build next is up to you.
         </p>
       </div>
@@ -870,7 +830,7 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="container-narrow">
-    <p class="section-label" style="color: var(--accent);">Get started</p>
+    <p class="section-label">Get started</p>
     <h2>Your roadmap, in a repo,<br>in five minutes.</h2>
     <p class="lead">Use the template, open Claude Code, and start talking. That's the whole setup.</p>
 
@@ -879,7 +839,7 @@
       <button class="copy-btn" id="copy-btn" onclick="copyClone(event)">Copy</button>
     </div>
 
-    <p class="cta-note">Requires <a href="https://docs.github.com/en/github-cli" target="_blank" style="color: #666;">GitHub CLI</a> and <a href="https://claude.ai/code" target="_blank" style="color: #666;">Claude Code</a></p>
+    <p class="cta-note">Requires <a href="https://docs.github.com/en/github-cli" target="_blank" style="color: var(--muted);">GitHub CLI</a> and <a href="https://claude.ai/code" target="_blank" style="color: var(--muted);">Claude Code</a></p>
 
     <br>
     <a class="btn-primary" href="https://github.com/clawmapper/clawmapper" target="_blank" rel="noopener">
