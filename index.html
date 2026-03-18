@@ -18,17 +18,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #1c2128;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #E05C1A;
-      --accent-dim: rgba(224, 92, 26, 0.12);
-      --accent-border: rgba(224, 92, 26, 0.35);
-      --green: #3fb950;
-      --code-bg: #1c2128;
+      --bg: #f7f6f2;
+      --surface: #eeecea;
+      --surface2: #e5e3df;
+      --border: #d0cdc8;
+      --text: #111110;
+      --muted: #6b6965;
+      --accent: #111110;
+      --accent-dim: rgba(17, 17, 16, 0.07);
+      --accent-border: rgba(17, 17, 16, 0.25);
+      --green: #2a7a3b;
+      --code-bg: #eeecea;
       --radius: 3px;
       --mono: "SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono", "Consolas", monospace;
     }
@@ -49,7 +49,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13, 17, 23, 0.92);
+      background: rgba(247, 246, 242, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -215,9 +215,9 @@
 
     .t-prompt { color: var(--green); }
     .t-cmd { color: var(--text); }
-    .t-comment { color: #484f58; }
+    .t-comment { color: #999794; }
     .t-agent { color: var(--accent); font-weight: 600; }
-    .t-output { color: #79c0ff; }
+    .t-output { color: #4a6fa5; }
     .t-cursor {
       display: inline-block;
       width: 8px;
@@ -594,7 +594,7 @@
   <div class="inner">
     <a class="logo" href="#">
       <svg class="claw" width="24" height="24" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="26" height="26" rx="0" fill="#E05C1A"/>
+        <rect width="26" height="26" rx="0" fill="#111110"/>
         <line x1="7" y1="5" x2="5" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
         <line x1="13" y1="4" x2="13" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
         <line x1="19" y1="5" x2="21" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="square"/>
