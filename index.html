@@ -508,6 +508,58 @@
       line-height: 1.55;
     }
 
+    /* ── AUDIENCES ── */
+    .audiences-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .audiences-section h2 { margin-bottom: 16px; }
+
+    .tab-bar { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; width: fit-content; margin: 0 auto 32px; }
+    .tab-btn { background: var(--bg); border: none; border-right: 1px solid var(--border); padding: 10px 28px; font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; letter-spacing: 0.3px; transition: background 0.15s, color 0.15s; }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active { background: var(--text); color: var(--bg); }
+    .tab-btn:hover:not(.active) { background: var(--surface2); color: var(--text); }
+
+    .tab-panel { text-align: left; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .tab-panel.hidden { display: none; }
+    .tab-meta { padding: 10px 16px; font-size: 12px; color: var(--muted); background: var(--surface); border-bottom: 1px solid var(--border); }
+    .tab-meta code { color: var(--text); }
+
+    .eng-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .eng-table th { padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); background: var(--surface); border-bottom: 1px solid var(--border); }
+    .eng-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+    .eng-table tr:last-child td { border-bottom: none; }
+    .eng-table tr:nth-child(even) td { background: var(--surface); }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; }
+    .badge-shipped  { background: #d4edda; color: #1a5c2a; }
+    .badge-progress { background: #dbeafe; color: #1a3a6c; }
+    .badge-planned  { background: var(--surface2); color: var(--muted); }
+    .badge-discovery{ background: #fef3c7; color: #78450a; }
+
+    .pm-columns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .pm-col { border-right: 1px solid var(--border); padding: 16px; }
+    .pm-col:last-child { border-right: none; }
+    .pm-col-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 12px; }
+    .pm-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 8px; }
+    .pm-card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .pm-card-owner { font-size: 11px; color: var(--muted); }
+
+    .board-view { padding: 24px; }
+    .board-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .board-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .board-stat-risk { border-color: #f59e0b; background: #fef3c7; }
+    .board-stat-num { font-size: 36px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 6px; }
+    .board-stat-risk .board-stat-num { color: #78450a; }
+    .board-stat-label { font-size: 12px; color: var(--muted); }
+    .board-themes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .board-theme { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .board-theme-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .board-theme-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .pm-columns { grid-template-columns: 1fr 1fr; }
+      .board-summary { grid-template-columns: 1fr 1fr; }
+      .board-themes { grid-template-columns: 1fr; }
+    }
+
     /* ── CTA ── */
     .cta-section {
       background: var(--bg);
@@ -730,6 +782,104 @@
   </div>
 </section>
 
+<!-- ONE ROADMAP, EVERY AUDIENCE -->
+<section class="audiences-section">
+  <div class="container">
+    <p class="section-label">One source of truth</p>
+    <h2>Every stakeholder.<br>One roadmap.</h2>
+    <p class="lead" style="max-width:600px;margin:0 auto 48px;">One repo. Ask for whatever view you need — Claude generates it. Nobody's waiting on a deck.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('eng', this)">Engineering</button>
+      <button class="tab-btn" onclick="showTab('pm', this)">Product</button>
+      <button class="tab-btn" onclick="showTab('board', this)">Board</button>
+    </div>
+
+    <!-- ENGINEERING TAB -->
+    <div class="tab-panel" id="tab-eng">
+      <div class="tab-meta">Generated from <code>roadmap/ftl-drive.md</code> · FTL Drive · Q2 2026</div>
+      <table class="eng-table">
+        <thead>
+          <tr><th>Item</th><th>Status</th><th>Owner</th><th>Priority</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Warp coil calibration</td><td><span class="badge badge-shipped">Shipped</span></td><td>Ben</td><td>P1</td><td>±0.003% variance, within spec</td></tr>
+          <tr><td>Exotic matter procurement</td><td><span class="badge badge-progress">In progress</span></td><td>Claude</td><td>P1</td><td>Supplier confirmed, delivery Q2</td></tr>
+          <tr><td>Causality violation patch</td><td><span class="badge badge-progress">In progress</span></td><td>Platform</td><td>P1</td><td>Regression in timeline branch</td></tr>
+          <tr><td>Passenger safety review</td><td><span class="badge badge-planned">Planned</span></td><td>Ben</td><td>P2</td><td>Blocked on causality patch</td></tr>
+          <tr><td>Paradox resolution strategy</td><td><span class="badge badge-discovery">Discovery</span></td><td>TBD</td><td>P1</td><td>No consensus on approach yet</td></tr>
+          <tr><td>Grandfather clause compliance</td><td><span class="badge badge-discovery">Discovery</span></td><td>Legal</td><td>P2</td><td>Flagged by compliance, Q3 target</td></tr>
+          <tr><td>Mars route optimisation</td><td><span class="badge badge-progress">In progress</span></td><td>Ben</td><td>P1</td><td>Pathfinding algo 60% complete</td></tr>
+          <tr><td>Relativistic UI latency</td><td><span class="badge badge-planned">Planned</span></td><td>Platform</td><td>P2</td><td>Time dilation UX unresolved</td></tr>
+          <tr><td>Heat death ETA dashboard</td><td><span class="badge badge-planned">Planned</span></td><td>Claude</td><td>P2</td><td>Scope TBD</td></tr>
+          <tr><td>Multiverse A/B testing</td><td><span class="badge badge-planned">Planned</span></td><td>TBD</td><td>P3</td><td>Requires stable paradox infra first</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PM TAB -->
+    <div class="tab-panel hidden" id="tab-pm">
+      <div class="tab-meta">Generated from <code>roadmap/ftl-drive.md</code> · FTL Drive · Q2 2026</div>
+      <div class="pm-columns">
+        <div class="pm-col">
+          <div class="pm-col-header">Shipped</div>
+          <div class="pm-card"><div class="pm-card-title">Warp coil calibration</div><div class="pm-card-owner">Ben · P1</div></div>
+        </div>
+        <div class="pm-col">
+          <div class="pm-col-header">In progress</div>
+          <div class="pm-card"><div class="pm-card-title">Exotic matter procurement</div><div class="pm-card-owner">Claude · P1</div></div>
+          <div class="pm-card"><div class="pm-card-title">Causality violation patch</div><div class="pm-card-owner">Platform · P1</div></div>
+          <div class="pm-card"><div class="pm-card-title">Mars route optimisation</div><div class="pm-card-owner">Ben · P1</div></div>
+        </div>
+        <div class="pm-col">
+          <div class="pm-col-header">Planned</div>
+          <div class="pm-card"><div class="pm-card-title">Passenger safety review</div><div class="pm-card-owner">Ben · P2</div></div>
+          <div class="pm-card"><div class="pm-card-title">Relativistic UI latency</div><div class="pm-card-owner">Platform · P2</div></div>
+          <div class="pm-card"><div class="pm-card-title">Heat death ETA dashboard</div><div class="pm-card-owner">Claude · P2</div></div>
+          <div class="pm-card"><div class="pm-card-title">Multiverse A/B testing</div><div class="pm-card-owner">TBD · P3</div></div>
+        </div>
+        <div class="pm-col">
+          <div class="pm-col-header">Discovery</div>
+          <div class="pm-card"><div class="pm-card-title">Paradox resolution strategy</div><div class="pm-card-owner">TBD · P1</div></div>
+          <div class="pm-card"><div class="pm-card-title">Grandfather clause compliance</div><div class="pm-card-owner">Legal · P2</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOARD TAB -->
+    <div class="tab-panel hidden" id="tab-board">
+      <div class="tab-meta">Generated from <code>roadmap/ftl-drive.md</code> · FTL Drive · Q2 2026</div>
+      <div class="board-view">
+        <div class="board-summary">
+          <div class="board-stat"><div class="board-stat-num">1</div><div class="board-stat-label">Shipped this quarter</div></div>
+          <div class="board-stat"><div class="board-stat-num">3</div><div class="board-stat-label">In progress</div></div>
+          <div class="board-stat"><div class="board-stat-num">2</div><div class="board-stat-label">In discovery</div></div>
+          <div class="board-stat board-stat-risk"><div class="board-stat-num">1</div><div class="board-stat-label">Active risk</div></div>
+        </div>
+        <div class="board-themes">
+          <div class="board-theme">
+            <div class="board-theme-title">Core propulsion — on track</div>
+            <div class="board-theme-body">Warp coil calibration shipped ahead of schedule. Exotic matter procurement confirmed with supplier. The fundamental engine is progressing to plan.</div>
+          </div>
+          <div class="board-theme">
+            <div class="board-theme-title">Risk: causality regression — being managed</div>
+            <div class="board-theme-body">A regression in the timeline branch is blocking passenger safety sign-off. Engineering have a fix in progress. No change to Q2 commitment yet, but we are watching this closely.</div>
+          </div>
+          <div class="board-theme">
+            <div class="board-theme-title">Navigation — in progress</div>
+            <div class="board-theme-body">Mars route optimisation is 60% complete. Relativistic UI latency and the heat death dashboard are planned for Q3 once the core propulsion track closes.</div>
+          </div>
+          <div class="board-theme">
+            <div class="board-theme-title">Open questions for Q3 planning</div>
+            <div class="board-theme-body">Paradox resolution has no agreed approach yet. Legal are scoping grandfather clause compliance. Both need owner assignment before Q3 commitments are made.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- STACK -->
 <section class="stack-section">
   <div class="container">
@@ -872,6 +1022,13 @@
 </footer>
 
 <script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.remove('hidden');
+    btn.classList.add('active');
+  }
+
   function copyClone(e) {
     if (e) e.stopPropagation();
     const cmd = document.getElementById('clone-cmd').textContent;
